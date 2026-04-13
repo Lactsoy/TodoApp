@@ -1,0 +1,35 @@
+﻿@model List<TodoApp.Models.TodoItem>
+
+<div style="max-width:600px; margin:50px auto; font-family:sans-serif;">
+    <h1>📝 My Todo List</h1>
+
+    <!-- Add Form -->
+    <form method="post" action="/Todo/Add" style="display:flex; gap:10px; margin-bottom:20px;">
+        <input name="title" placeholder="Enter a task..."
+               style="flex:1; padding:10px; font-size:16px;" />
+        <button type="submit"
+                style="padding:10px 20px; background:#007bff; color:white; border:none; cursor:pointer;">
+            Add
+        </button>
+    </form>
+
+    <!-- Todo List -->
+    @if (Model.Count == 0)
+    {
+        <p>No tasks yet. Add one above!</p>
+    }
+    else
+    {
+        <ul style="list-style:none; padding:0;">
+            @foreach (var item in Model)
+            {
+                <li style="display:flex; justify-content:space-between;
+                    padding:10px; margin-bottom:8px; background:#f4f4f4;">
+                    <span>@item.Title</span>
+                    <a href="/Todo/Delete/@item.Id"
+                       style="color:red; text-decoration:none;">Delete</a>
+                </li>
+            }
+        </ul>
+    }
+</div>
