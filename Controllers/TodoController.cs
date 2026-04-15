@@ -13,10 +13,11 @@ namespace TodoApp.Controllers
         }
 
         // Show all todos
+        // TodoController.cs
         public IActionResult Index()
         {
-            var items = _context.TodoItems.ToList();
-            return View(items);
+            var items = _context.TodoItems.ToList(); // Gets your tasks
+            return View(items); // Passes them to the page
         }
 
         // Add new todo
