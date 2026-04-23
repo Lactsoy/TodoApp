@@ -9,9 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Install Railway CLI
-        run: npm install -g @railway/cli
+      
       - name: Deploy to Railway
-        run: railway up --detach --service a566a74d-287c-4827-9b0d-c4e88f8a65d7 --project ee49cd6f-2476-42d0-b8de-156cfd34bdbc
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+        uses: bervProject/railway-deploy@main
+        with:
+          railway_token: ${{ secrets.RAILWAY_TOKEN }}
+          service: "TodoApp"
